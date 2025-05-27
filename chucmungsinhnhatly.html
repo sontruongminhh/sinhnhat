@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Chúc Mừng Sinh Nhật</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      text-align: center;
+      background: #232323;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-family: 'Pacifico', cursive;
+      font-size: 2.8em;
+      color: #e75480;
+      text-shadow: 2px 2px 8px #fff6, 0 2px 8px #0002;
+      letter-spacing: 2px;
+      font-weight: normal;
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+      animation: none;
+    }
+
+    .container {
+      /* Bỏ hoàn toàn */
+    }
+
+    .cake {
+      position: relative;
+      margin: 50px auto;
+      width: 240px;
+      height: 180px;
+      transform-style: preserve-3d;
+    }
+
+    .cake-base {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 25px;
+      background: #fff;
+      border-radius: 50% 50% 60% 60%/60% 60% 100% 100%;
+      z-index: 1;
+      box-shadow: 0 2px 10px #0008;
+    }
+
+    .cake-layer {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #5d2c13;
+      border-radius: 50% 50% 40% 40%/60% 60% 100% 100%;
+      box-shadow: 0 2px 10px #0005;
+    }
+
+    .cake-layer-1 {
+      width: 180px;
+      height: 60px;
+      bottom: 25px;
+      z-index: 2;
+    }
+
+    .cake-layer-2 {
+      width: 140px;
+      height: 45px;
+      bottom: 70px;
+      z-index: 3;
+    }
+
+    .cake-layer-3 {
+      width: 90px;
+      height: 30px;
+      bottom: 105px;
+      z-index: 4;
+    }
+
+    .cake-icing {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      z-index: 10;
+    }
+
+    .icing-1 {
+      width: 180px;
+      height: 30px;
+      bottom: 55px;
+      border-radius: 50% 50% 60% 60%/60% 60% 100% 100%;
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 80% 80%, 70% 100%, 60% 80%, 50% 100%, 40% 80%, 30% 100%, 20% 80%, 10% 100%, 0 80%);
+    }
+
+    .icing-2 {
+      width: 140px;
+      height: 22px;
+      bottom: 95px;
+      border-radius: 50% 50% 60% 60%/60% 60% 100% 100%;
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 80% 80%, 70% 100%, 60% 80%, 50% 100%, 40% 80%, 30% 100%, 20% 80%, 10% 100%, 0 80%);
+    }
+
+    .icing-3 {
+      width: 90px;
+      height: 15px;
+      bottom: 128px;
+      border-radius: 50% 50% 60% 60%/60% 60% 100% 100%;
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 90% 100%, 80% 80%, 70% 100%, 60% 80%, 50% 100%, 40% 80%, 30% 100%, 20% 80%, 10% 100%, 0 80%);
+    }
+
+    .candle {
+      width: 12px;
+      height: 40px;
+      background: #d32f2f;
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 4px;
+      z-index: 20;
+      box-shadow: 0 0 4px #0005;
+    }
+
+    .flame {
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle, #ffeb3b 60%, #ff9800 100%);
+      border-radius: 50% 50% 40% 40%;
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: flicker 0.1s infinite alternate;
+      box-shadow: 0 0 20px #ff9800;
+      z-index: 21;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      z-index: 30;
+      opacity: 0.8;
+    }
+
+    .sprinkles {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #ff69b4;
+      border-radius: 50%;
+      animation: sprinkle 2s infinite;
+    }
+
+    @keyframes sprinkle {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-5px) rotate(180deg); }
+    }
+
+    @keyframes flicker {
+      from { 
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+      }
+      to { 
+        opacity: 0.8;
+        transform: translateX(-50%) scale(1.2);
+      }
+    }
+
+    .hidden { 
+      display: none;
+      animation: fadeOut 0.5s ease-out;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    #message {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.1em;
+      color: #ffb347;
+      margin-top: 30px;
+      text-shadow: 1px 1px 4px #fff8, 0 2px 8px #0002;
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+      letter-spacing: 1px;
+    }
+
+    #message.show {
+      opacity: 1;
+    }
+
+    .balloons {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .balloon {
+      position: absolute;
+      width: 30px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: floatBalloon 15s linear infinite;
+    }
+
+    @keyframes floatBalloon {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎂 Chúc Mừng Sinh Nhật Happy Happy Thổi Vào Bánh Nhé!!!</h1>
+  <div class="cake">
+    <div class="cake-base"></div>
+    <div class="cake-layer cake-layer-1"></div>
+    <div class="cake-icing icing-1"></div>
+    <div class="cake-layer cake-layer-2"></div>
+    <div class="cake-icing icing-2"></div>
+    <div class="cake-layer cake-layer-3"></div>
+    <div class="cake-icing icing-3"></div>
+    <div class="candle">
+      <div class="flame" id="flame"></div>
+    </div>
+  </div>
+  <p id="message">Thổi vào micro để tắt nến...</p>
+
+  <div class="balloons" id="balloons"></div>
+
+  <script>
+    // Tạo bong bóng
+    function createBalloons() {
+      const balloons = document.getElementById('balloons');
+      const colors = ['#ff9a9e', '#fad0c4', '#ffd700', '#ff9800'];
+      
+      for(let i = 0; i < 20; i++) {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.left = Math.random() * 100 + '%';
+        balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+        balloon.style.animationDelay = Math.random() * 15 + 's';
+        balloons.appendChild(balloon);
+      }
+    }
+
+    createBalloons();
+
+    // Tạo rắc
+    function createSprinkles() {
+      const cake = document.querySelector('.cake');
+      const colors = ['#ff69b4', '#ff1493', '#ff00ff', '#ff69b4'];
+      
+      for(let i = 0; i < 30; i++) {
+        const sprinkle = document.createElement('div');
+        sprinkle.className = 'sprinkles';
+        sprinkle.style.left = Math.random() * 100 + '%';
+        sprinkle.style.top = Math.random() * 200 + 'px';
+        sprinkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        sprinkle.style.animationDelay = Math.random() * 2 + 's';
+        cake.appendChild(sprinkle);
+      }
+    }
+
+    createSprinkles();
+
+    // Tạo confetti xung quanh bánh
+    function createConfetti() {
+      const cake = document.querySelector('.cake');
+      const colors = ['#ffeb3b', '#ff9800', '#00bcd4', '#e91e63', '#4caf50', '#fff', '#f44336'];
+      for(let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = (Math.random() * 220 + 10) + 'px';
+        confetti.style.top = (Math.random() * 160 + 10) + 'px';
+        cake.appendChild(confetti);
+      }
+    }
+
+    createConfetti();
+
+    // Xử lý âm thanh
+    let flame = document.getElementById('flame');
+    let message = document.getElementById('message');
+
+    navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+      .then(stream => {
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const mic = audioContext.createMediaStreamSource(stream);
+        const analyser = audioContext.createAnalyser();
+        analyser.fftSize = 256;
+
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+        mic.connect(analyser);
+
+        function checkBlow() {
+          analyser.getByteFrequencyData(dataArray);
+          const volume = dataArray.reduce((a, b) => a + b) / dataArray.length;
+
+          if (volume > 50) {
+            flame.classList.add("hidden");
+            message.innerText = "🎉 Nến đã được thổi tắt! Chúc mừng sinh nhật Ly xinh gái nhé!";
+            message.classList.add("show");
+          }
+
+          requestAnimationFrame(checkBlow);
+        }
+
+        checkBlow();
+      })
+      .catch(err => {
+        console.error('Không thể truy cập micro:', err);
+        message.innerText = "⚠️ Trình duyệt không cho phép truy cập micro.";
+        message.classList.add("show");
+      });
+  </script>
+</body>
+</html>
